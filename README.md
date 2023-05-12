@@ -70,4 +70,4 @@ https://www.figma.com/file/JIgvUcRmhd5WH4r8FnaIeg/%E7%94%BB%E9%9D%A2%E9%81%B7%E7
 
 ## ER図
 gyazo:
-https://gyazo.com/03d9d6e72f2c06a8cfeb4bd85a1c7493
+https://gyazo.com/dd8a04204ff95a1d9ed0350f7f0a4a42
