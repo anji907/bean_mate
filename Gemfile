@@ -65,3 +65,4 @@ group :development do
 end
 
 gem 'sorcery'
+gem "cssbundling-rails", "~> 1.1"
