@@ -1,0 +1,16 @@
+<h1>ユーザー一覧</h1>
+
+<p id="notice"><%= flash[:notice] %></p>
+
+<%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
+<%= link_to '新規登録', signup_path %>
+<%= link_to 'ログイン', login_path %><br>
+<% if current_user %>
+  <%= current_user.nickname %>さんがログイン中<br>
+<% end %>
+
+<% @users.each do |user| %>
+  <%= user.nickname %>さん
+  <%= link_to 'アカウント削除', user_path(user.id), data: { turbo_method: :delete } %>
+  <br>
+<% end %>
