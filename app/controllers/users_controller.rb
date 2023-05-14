@@ -1,5 +1,3 @@
-require 'debug'
-
 class UsersController < ApplicationController
   def index
     @users = User.all
