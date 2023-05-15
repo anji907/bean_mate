@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>プロフィール</h1>
+
+  <div class="profile">
+    <p>ニックネーム: <%= @user.nickname %></p>
+    <p>自己紹介文: <%= @user.bio if @user.bio %></p>
+    <p>SNS: <%= @user.sns_identifier if @user.sns_identifier %></p>
+  </div>
+
+  <%= link_to 'プロフィールを編集', edit_profiles_path, class: 'btn btn-primary' %><br>
+
+  <%= link_to 'メッセージをする', '#', class: 'btn btn-primary' if @user != current_user %><br>
+  <%= link_to '行きたいリストを見る', '#', class: 'btn btn-primary' %>
+</div>
