@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, uniqueness: true
+
+  has_many_attached :avatars
 end
