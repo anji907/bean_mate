@@ -14,7 +14,7 @@
 
     <div class="mb-3">
       <%= f.label :sns_identifier, class: 'label-control' %>
-      <%= f.text_field :sns_identifier, class: 'form-control' %>
+      <%= f.text_field :sns_identifier, class: 'form-control', placeholder: 'URLを貼り付けてください' %>
     </div>
 
     <div class="mb-3">
@@ -23,8 +23,10 @@
     </div>
 
     <div class="mb-3">
-      <% @user.avatars.each do |avatar| %>
-        <%= image_tag(avatar, width: 300) %>
+      <% if @user.avatars.attached? %>
+        <% @user.avatars.each do |avatar| %>
+          <%= image_tag avatar, width: '100' %>
+        <% end %>
       <% end %>
     </div>
     
