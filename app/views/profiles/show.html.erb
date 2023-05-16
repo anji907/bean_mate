@@ -4,7 +4,21 @@
   <div class="profile">
     <p>ニックネーム: <%= @user.nickname %></p>
     <p>自己紹介文: <%= @user.bio if @user.bio %></p>
-    <p>SNS: <%= @user.sns_identifier if @user.sns_identifier %></p>
+
+    <% if @user.sns_identifier %>
+      <p>SNS:
+        <%= link_to @user.sns_identifier, target: :_blank do %>
+          <i class="bi bi-instagram"></i>
+        <% end %>
+      </p>
+    <% end %>
+
+    <div class="mb-3">
+      <p>プロフィール画像:</p>
+      <% @user.avatars.each do |avatar| %>
+        <%= image_tag(avatar, width: 200) %>
+      <% end %>
+    </div>
   </div>
 
   <%= link_to 'プロフィールを編集', edit_profiles_path, class: 'btn btn-primary' %><br>

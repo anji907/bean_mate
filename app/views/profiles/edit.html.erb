@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="text-center">プロフィール編集</h1>
+
+  <%= form_with model: @user, url: profiles_path, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :nickname, class: 'label-control' %>
+      <%= f.text_field :nickname, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :bio, class: 'label-control' %>
+      <%= f.text_area :bio, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :sns_identifier, class: 'label-control' %>
+      <%= f.text_field :sns_identifier, class: 'form-control', placeholder: 'URLを貼り付けてください' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :avatars, class: 'label-control' %>
+      <%= f.file_field :avatars, class: 'form-control', multiple: true %>
+    </div>
+
+    <div class="mb-3">
+      <% if @user.avatars.attached? %>
+        <% @user.avatars.each do |avatar| %>
+          <%= image_tag avatar, width: '100' %>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div class="mb-3">
+      <%= f.submit '更新', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
