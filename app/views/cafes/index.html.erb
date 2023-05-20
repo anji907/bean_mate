@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row row-cols-2">
+    <% @cafes.each do |cafe| %>
+      <div class="col">
+        <% cafe.images.each do |image| %>
+          <%= image_tag image %>
+          <p><%= cafe.name %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
