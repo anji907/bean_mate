@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="mt-5 mb-5">
+    <% @cafe.images.each do |image| %>
+      <%= image_tag image.variant(resize_to_fill: [600, 400]), class: 'd-block mx-auto' %>
+    <% end %>
+    <h5 class="text-center mt-4"><%= @cafe.name %></h5>
+  </div>
+
+  <div class="center-block">
+    <ul>
+      <li>
+        <p>住所: <%= @cafe.address %></p>
+      </li>
+      <li>
+        <p>詳細: <%= @cafe.description if @cafe.description %></p>
+      </li>
+      <li>
+        <p>ウェブサイト: <%= link_to @cafe.website, @cafe.website if @cafe.website %></p>
+      </li>
+      <li>
+        <p>営業時間: <%= @cafe.weekday_text if @cafe.weekday_text %></p>
+      </li>
+    </ul>
+  </div>
+</div>
