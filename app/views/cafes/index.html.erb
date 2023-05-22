@@ -1,12 +1,18 @@
 <div class="container">
-  <div class="row row-cols-2">
+  <div class="row row-cols-3 mt-5">
     <% @cafes.each do |cafe| %>
       <div class="col">
         <% cafe.images.each do |image| %>
-          <%= image_tag image %>
-          <p><%= cafe.name %></p>
+          <%= link_to cafe_path(cafe) do %>
+            <%= image_tag image.variant(resize_to_fill: [300, 300]), class: 'img-thumbnail' %>
+            <p><%= cafe.name %></p>
+          <% end %>
         <% end %>
+        <i class="bi bi-heart"></i>
       </div>
     <% end %>
+  </div>
+  <div class="pagination justify-content-center">
+    <%= paginate @cafes, theme: 'bootstrap-5' %>
   </div>
 </div>
