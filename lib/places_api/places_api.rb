@@ -97,3 +97,30 @@ def save_place_photo
     cafe.images.attach(io: StringIO.new(photo_data), filename: "#{cafe.name}.jpg")
   end
 end
+
+def add_weekday_opening_hours_to_cafe
+  cafes = Cafe.where(weekday_text: nil)
+
+  cafes.each do |cafe|
+    next if cafe.name == "OMUSUBI CAFE"
+    query = URI.encode_www_form(
+      place_id: cafe.place_id,
+      language: "ja",
+      key: ENV["GOOGLE_API_KEY"]
+    )
+
+    url = URI "https://maps.googleapis.com/maps/api/place/details/json?#{query}"
+
+    https = Net::HTTP.new(url.host, url.port)
+    https.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    response = https.request(request)
+
+    json_data = JSON.parse(response.body)
+
+    weekday_text = json_data["result"]["opening_hours"]["weekday_text"].join.delete(":, ") if json_data["result"]["opening_hours"]
+
+    cafe.update!(weekday_text: weekday_text) if weekday_text
+  end
+end
