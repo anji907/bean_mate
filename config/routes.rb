@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
-  root 'users#index'
+  root 'cafes#index'
   resources :users, only: %i[create destroy]
   resource :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
+  resources :cafes, only: %i[index show]
 end
