@@ -1,4 +1,8 @@
 <div class="container">
+  <%= search_form_for @q, url: cafes_path, local: true, class: 'd-flex mt-5' do |f| %>
+    <%= f.search_field :name_or_address_cont, class: "form-control me-2", placeholder: "カフェを検索", aria_label: "Search" %>
+    <%= f.submit "search", class: "btn btn-outline-success" %>
+  <% end %>
   <div class="row row-cols-3 mt-5">
     <% @cafes.each do |cafe| %>
       <div class="col">

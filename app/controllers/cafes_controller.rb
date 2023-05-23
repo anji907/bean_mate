@@ -1,6 +1,7 @@
 class CafesController < ApplicationController
   def index
-    @cafes = Cafe.all.page(params[:page])
+    @q = Cafe.ransack(params[:q])
+    @cafes = @q.result(distinct: true).page(params[:page])
   end
 
   def show

@@ -70,3 +70,4 @@ gem 'sorcery'
 gem "cssbundling-rails", "~> 1.1"
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
+gem 'ransack'
