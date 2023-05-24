@@ -9,4 +9,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many_attached :avatars
+
+  has_many :room_users, dependent: :destroy
+  has_many :rooms, through: :room_users
 end
