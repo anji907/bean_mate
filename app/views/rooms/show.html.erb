@@ -1,0 +1,30 @@
+<div class="container">
+  <h4 class="text-center mt-3">トーク画面</h4>
+  <div class="message-area" style="height: 500px;">
+    <% @messages.each do |message| %>
+      <% if message.user == current_user %>
+        <div class="message-right">
+          <div class="message-content">
+            <span><%= message.content %></span>
+          </div>
+        </div>
+      <% else %>
+        <div class="message-left">
+          <span class="user-nickname"><%= message.user.nickname %>さん</span>
+          <div class="message-content">
+            <span><%= message.content %></span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="message-form">
+    <%= form_with model: @message, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.text_area :content, class: 'form-control' %>
+      <%= f.submit '送信', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

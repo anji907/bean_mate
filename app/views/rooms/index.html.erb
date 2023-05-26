@@ -1,0 +1,10 @@
+<div class="container">
+  <h4 class="text-center mt-5">トーク一覧</h4>
+  <% @rooms.each do |room| %>
+    <% room.users.each do |user| %>
+      <%= link_to room_path(room.id) do %>
+        <%= user.nickname if user != current_user %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
