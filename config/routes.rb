@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resource :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
   resources :cafes, only: %i[index show]
+  resources :rooms, only: %i[index show create]
+  resources :messages, only: :create
 end
