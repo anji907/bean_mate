@@ -22,4 +22,23 @@
       </li>
     </ul>
   </div>
+
+  <div class="liked_users">
+    <h5>いいねしたユーザー</h5>
+    <ul>
+      <% User.all.each do |user| %>
+        <% if user != current_user %>
+          <li><%= user.nickname %></li>
+          <% if current_user.talking?(user) %>
+            <%= link_to 'メッセージする', room_path(get_room_id(user)) %>
+          <% else %>
+            <%= form_with model: @room, local: true do |f| %>
+              <%= f.hidden_field :user_id, value: user.id %>
+              <%= f.submit 'メッセージする', class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
