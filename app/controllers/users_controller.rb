@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+    @rooms = Room.new
+    render 'profiles/show'
+  end
+
   def new
     @user = User.new
   end

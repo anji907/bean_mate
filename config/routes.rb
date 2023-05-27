@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
   root 'cafes#index'
-  resources :users, only: %i[create destroy]
+  resources :users, only: %i[show create destroy]
   resource :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
   resources :cafes, only: %i[index show]
