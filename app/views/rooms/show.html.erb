@@ -1,18 +1,24 @@
 <div class="container">
+  <span><%= link_to 'トーク一覧へ', rooms_path %></span>
   <h4 class="text-center mt-3">トーク画面</h4>
-  <div class="message-area" style="height: 500px;">
+  <div class="message-area" style="height: 450px;">
     <% @messages.each do |message| %>
       <% if message.user == current_user %>
         <div class="message-right">
           <div class="message-content">
-            <span><%= message.content %></span>
+            <%= simple_format message.content %>
           </div>
         </div>
       <% else %>
         <div class="message-left">
+          <% if message.user.avatars[0] %>
+            <%= image_tag message.user.avatars[0], width: 40, height: 40, class: 'rounded-circle mr15'%>
+          <% else %>
+            <%= image_tag 'default-avatar.jpeg', width: 40, height: 40, class: 'rounded-circle mr15'%>
+          <% end %>
           <span class="user-nickname"><%= message.user.nickname %>さん</span>
           <div class="message-content">
-            <span><%= message.content %></span>
+            <%= simple_format message.content %>
           </div>
         </div>
       <% end %>
