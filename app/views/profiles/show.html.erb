@@ -21,8 +21,14 @@
     </div>
   </div>
 
-  <%= link_to 'プロフィールを編集', edit_profiles_path, class: 'btn btn-primary' %><br>
-
-  <%= link_to 'メッセージをする', '#', class: 'btn btn-primary' if @user != current_user %><br>
+  <%= link_to 'プロフィールを編集', edit_profiles_path, class: 'btn btn-primary' if @user == current_user %><br>
+  <% if current_user.talking?(@user) %>
+    <%= link_to 'メッセージする', room_path(get_room_id(@user)), class: 'btn btn-primary' %>
+  <% else %>
+    <%= form_with model: @room, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.submit 'メッセージする', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
   <%= link_to '行きたいリストを見る', '#', class: 'btn btn-primary' %>
 </div>

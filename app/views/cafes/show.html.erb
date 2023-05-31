@@ -22,4 +22,33 @@
       </li>
     </ul>
   </div>
+
+  <div class="liked_users">
+    <h5>いいねしたユーザー</h5>
+      <div class="row row-cols-3 mt-5">
+        <% User.all.each do |user| %>
+          <% if user != current_user %>
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <%= link_to user do %>
+                  <%= image_tag avatars_attached?(user), class: 'card-img-top' %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= user.nickname %></h5>
+                  <p class="card-text"><%= user.bio %></p>
+                  <% if current_user.talking?(user) %>
+                    <%= link_to 'メッセージする', room_path(get_room_id(user)), class: 'btn btn-primary' %>
+                  <% else %>
+                    <%= form_with model: @room, local: true do |f| %>
+                      <%= f.hidden_field :user_id, value: user.id %>
+                      <%= f.submit 'メッセージする', class: 'btn btn-primary' %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
 </div>

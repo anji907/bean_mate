@@ -1,0 +1,19 @@
+<% if message.user == current_user %>
+  <div class="message-right">
+    <div class="message-content">
+      <%= simple_format message.content, id: 'message' %>
+    </div>
+  </div>
+<% else %>
+  <div class="message-left">
+    <% if message.user.avatars[0] %>
+      <%= image_tag message.user.avatars[0], width: 40, height: 40, class: 'rounded-circle mr15'%>
+    <% else %>
+      <%= image_tag 'default-avatar.jpeg', width: 40, height: 40, class: 'rounded-circle mr15'%>
+    <% end %>
+    <span class="user-nickname"><%= message.user.nickname %>さん</span>
+    <div class="message-content">
+      <%= simple_format message.content, id: 'message' %>
+    </div>
+  </div>
+<% end %>

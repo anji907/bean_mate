@@ -1,0 +1,30 @@
+<div class="container">
+  <h4 class="text-center mt-5">トーク一覧</h4>
+
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <table class="table">
+        <% @rooms.each do |room| %>
+          <% room.users.each do |user| %>
+            <% if user != current_user %>
+              <tr>
+                <td>
+                  <% if user.avatars[0] %>
+                    <%= image_tag user.avatars[0], width: 40, height: 40, class: 'rounded-circle mr15'%>
+                  <% else %>
+                    <%= image_tag 'default-avatar.jpeg', width: 40, height: 40, class: 'rounded-circle mr15'%>
+                  <% end %>
+                </td>
+                <td>
+                <%= link_to room_path(room.id) do %>
+                  <%= user.nickname%>
+                <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
