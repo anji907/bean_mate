@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   get '/signup', to: 'users#new'
   get '/login', to: 'user_sessions#new'
