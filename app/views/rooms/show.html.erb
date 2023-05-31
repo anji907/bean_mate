@@ -1,36 +1,15 @@
 <div class="container">
   <span><%= link_to 'トーク一覧へ', rooms_path %></span>
   <h4 class="text-center mt-3">トーク画面</h4>
-  <div class="message-area" style="height: 450px;">
-    <% @messages.each do |message| %>
-      <% if message.user == current_user %>
-        <div class="message-right">
-          <div class="message-content">
-            <%= simple_format message.content %>
-          </div>
-        </div>
-      <% else %>
-        <div class="message-left">
-          <% if message.user.avatars[0] %>
-            <%= image_tag message.user.avatars[0], width: 40, height: 40, class: 'rounded-circle mr15'%>
-          <% else %>
-            <%= image_tag 'default-avatar.jpeg', width: 40, height: 40, class: 'rounded-circle mr15'%>
-          <% end %>
-          <span class="user-nickname"><%= message.user.nickname %>さん</span>
-          <div class="message-content">
-            <%= simple_format message.content %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+  <div class="message-area" style="height: 450px;" id="messages">
+    <%= render partial: 'messages/message', collection: @messages %>
   </div>
 
   <div id="message-form">
-    <%= form_with model: @message, local: true do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= form_with model: @message do |f| %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <%= f.text_area :content, class: 'form-control' %>
-      <%= f.submit '送信', class: 'btn btn-primary' %>
+      <%= f.text_area :content, class: 'form-control', id: 'js-content' %>
+      <%= f.submit '送信', class: "btn btn-primary", id: "js-submit-btn" %>
     <% end %>
   </div>
 </div>
