@@ -11,5 +11,16 @@ consumer.subscriptions.create("MessageChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    const messages = document.getElementById('messages');
+    messages.insertAdjacentHTML('beforeend', data['message']);
+    document.getElementById('js-content').value = '';
+    scrollToBottom();
   }
 });
+
+const scrollToBottom = () => {
+  const messageArea = document.getElementById('messages');
+  messageArea.scrollTop = messageArea.scrollHeight;
+};
+
+window.addEventListener('DOMContentLoaded', scrollToBottom);
