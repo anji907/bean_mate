@@ -1,4 +1,7 @@
-<%= link_to like_path(current_user.likes.find_by(cafe_id: cafe.id)), data: { "turbo-method": :delete },
-  remote: true, id: "js-like-button-for-cafe-#{cafe.id}" do %>
-  <i class="bi bi-heart-fill"></i>
-<% end %>
+<div id="js-like-button-for-cafe-<%= cafe.id %>">
+  <span><%= pluralize(cafe.likes.count, 'like') %></span>
+  <%= link_to like_path(current_user.likes.find_by(cafe_id: cafe.id)), data: { "turbo-method": :delete },
+    remote: true do %>
+    <i class="bi bi-heart-fill"></i>
+  <% end %>
+</div>
