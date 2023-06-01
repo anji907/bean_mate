@@ -13,9 +13,23 @@ class User < ApplicationRecord
   has_many :room_users, dependent: :destroy
   has_many :rooms, through: :room_users
   has_many :messages, dependent: :destroy
+
   has_many :likes, dependent: :destroy
+  has_many :liked_cafes, through: :likes, source: :cafe
 
   def talking?(user)
     rooms.map{|room| room.users}.flatten.reject{|usr| usr == self}.include?(user)
+  end
+
+  def liked?(cafe)
+    liked_cafes.include?(cafe)
+  end
+
+  def like(cafe)
+    liked_cafes << cafe
+  end
+
+  def unlike(cafe)
+    liked_cafes.destroy(cafe)
   end
 end
