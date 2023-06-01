@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "js-like-button-for-cafe-#{@cafe.id}" do %>
+  <%= render partial: 'like', locals: { cafe: @cafe } %>
+<% end %>

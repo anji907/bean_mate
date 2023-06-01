@@ -1,0 +1,7 @@
+<div id="js-like-button-for-cafe-<%= cafe.id %>">
+  <span><%= pluralize(cafe.likes.count, 'like') %></span>
+  <%= link_to likes_path(cafe_id: cafe), data: { "turbo-method": :post },
+    remote: true do %>
+    <i class="bi bi-heart"></i>
+  <% end %>
+</div>

@@ -1,6 +1,8 @@
 class Cafe < ApplicationRecord
   has_many_attached :images
 
+  has_many :likes, dependent: :destroy
+
   def self.ransackable_attributes(auth_object = nil)
     ["address", "created_at", "description", "id", "latitude", "longitude", "name", "place_id", "updated_at", "website", "weekday_text"]
   end
