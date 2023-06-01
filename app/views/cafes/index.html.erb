@@ -12,7 +12,7 @@
             <p><%= cafe.name %></p>
           <% end %>
         <% end %>
-        <i class="bi bi-heart"></i>
+        <%= render partial: 'likes/like_button', locals: { cafe: cafe } %>
       </div>
     <% end %>
   </div>

@@ -1,0 +1,4 @@
+<%= link_to likes_path(cafe_id: cafe), data: { "turbo-method": :post },
+  remote: true, id: "js-like-button-for-cafe-#{cafe.id}" do %>
+  <i class="bi bi-heart"></i>
+<% end %>

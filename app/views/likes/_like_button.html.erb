@@ -1,0 +1,5 @@
+<% if current_user.liked?(cafe) %>
+  <%= render partial: 'likes/unlike', locals: { cafe: cafe } %>
+<% else %>
+  <%= render partial: 'likes/like', locals: { cafe: cafe } %>
+<% end %>
