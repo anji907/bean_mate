@@ -5,7 +5,7 @@
   <% end %>
   <div class="row row-cols-3 mt-5">
     <% @cafes.each do |cafe| %>
-      <div class="col">
+      <div class="col mb-3">
         <% cafe.images.each do |image| %>
           <%= link_to cafe_path(cafe) do %>
             <%= image_tag image.variant(resize_to_fill: [300, 300]), class: 'img-thumbnail' %>
