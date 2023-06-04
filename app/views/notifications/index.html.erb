@@ -1,0 +1,29 @@
+<div class="container">
+  <% flash.each do |flash| %>
+    <div class="alert alert-<%= flash[0] %> alert-dismissible fade show mt-3" role="alert">
+      <%= flash[1] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="card mt-5">
+    <div class="card-header d-flex align-items-center">
+      <div>
+        <i class="bi bi-person"></i>
+        通知
+      </div>
+      <div class="ms-auto">
+        <% if current_user.passive_notifications.where(is_read: false).present? %>
+          <%= link_to '全て既読にする', all_read_notifications_path, data: { turbo_method: :post }, class: 'btn btn-primary btn-sm'%>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush notification-list-scroll">
+        <%= render partial: 'notifications/notification', collection: @notifications %>
+      </ul>
+      <div class="mx-auto mt-3">
+        <%= paginate @notifications %>
+      </div>
+    </div>
+  </div>
+</div>
