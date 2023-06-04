@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.save
       ActionCable.server.broadcast 'message_channel', { message: render_message(@message) }
+      @message.create_message_notification!(current_user)
       head :ok
     else
       redirect_to room_path(@message.room)
