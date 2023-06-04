@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :likes, only: %i[create destroy]
   resources :rooms, only: %i[index show create]
   resources :messages, only: :create
+  resources :notifications, only: :index
 end
