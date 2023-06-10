@@ -8,6 +8,6 @@ class Cafe < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["images_attachments", "images_blobs"]
+    ["images_attachments", "images_blobs", "likes"]
   end
 end
