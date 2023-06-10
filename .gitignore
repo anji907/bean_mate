@@ -33,6 +33,7 @@
 /.vscode/
 /app/assets/builds/*
 !/app/assets/builds/.keep
+!/app/assets/builds/custom.css
 
 /node_modules
 /.env
