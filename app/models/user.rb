@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_cafes, through: :likes, source: :cafe
 
+  enum role: { general: 0, admin: 1 }
+
   def talking?(user)
     rooms.map{|room| room.users}.flatten.reject{|usr| usr == self}.include?(user)
   end
