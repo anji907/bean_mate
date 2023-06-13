@@ -1,4 +1,4 @@
-require 'lib/line_messaging_api'
+require 'lib/line_messaging_api/push_message'
 
 class LineBotController < ApplicationController
   skip_before_action :require_login
