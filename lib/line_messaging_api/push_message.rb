@@ -1,6 +1,6 @@
 require 'line/bot'
 
-def push_line
+def push_line(line_user_id)
   message = {
     type: 'text',
     text: 'Bean Mateに新しいメッセージが届いています。'
@@ -9,6 +9,6 @@ def push_line
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_token = ENV["LINE_CHANNEL_ACCESS_TOKEN"]
   }
-  response = client.push_message("<to>", message)
+  response = client.push_message(line_user_id, message)
   p response
 end
