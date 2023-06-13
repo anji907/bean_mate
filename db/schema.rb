@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_07_053739) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_045936) do
   create_table "active_admin_comments", charset: "utf8mb4", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -129,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_053739) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
+    t.string "line_user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
