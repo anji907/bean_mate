@@ -89,7 +89,7 @@ class LineLoginApiController < ApplicationController
         grant_type: 'authorization_code',
         code: code,
         redirect_uri: redirect_uri,
-        client_id: ENV['LINE_LOGIN_CLIENT_ID']
+        client_id: ENV['LINE_LOGIN_CLIENT_ID'],
         client_secret: ENV['LINE_LOGIN_CHANNEL_SECRET']
       }
     }
