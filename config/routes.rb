@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   post 'webhook', to: 'line_bot#callback'
   root 'cafes#index'
 
+  # LINEログイン
+  get 'line_login_api/login', to: 'line_login_api#login'
+  get 'line_login_api/callback', to: 'line_login_api#callback'
+
   resources :users, only: %i[show create destroy]
   resource :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
