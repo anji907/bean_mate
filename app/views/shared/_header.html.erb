@@ -8,7 +8,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if current_user %>
           <li class="nav-item">
-            <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: "nav-link" %>
+            <%= button_to 'ログアウト', logout_path, method: :delete, class: "nav-link btn btn-primary", data: { turbo: true } %>
           </li>
           <li class="nav-item">
             <%= link_to "#{current_user.nickname}さんがログイン中", profiles_path, class: "nav-link" %>
