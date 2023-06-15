@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   has_many_attached :avatars
 
+  # sorcery external
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
+
   has_many :room_users, dependent: :destroy
   has_many :rooms, through: :room_users
   has_many :messages, dependent: :destroy
