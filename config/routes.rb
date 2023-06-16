@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get 'line_login_api/login', to: 'line_login_api#login'
   get 'line_login_api/callback', to: 'line_login_api#callback'
 
+  # sorcery LINEログイン
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
   resources :users, only: %i[show create destroy]
   resource :profiles, only: %i[show edit update]
   resources :password_resets, only: %i[new create edit update]
