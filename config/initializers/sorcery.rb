@@ -224,7 +224,6 @@ Rails.application.config.sorcery.configure do |config|
   config.line.callback_url = "https://bean-mate.herokuapp.com/oauth/callback?provider=line"
   config.line.scope = "profile openid"
   # config.line.bot_prompt = "normal"
-  config.line.user_info_path = 'https://api.line.me/oauth2/v2.1/verify'
   config.line.user_info_mapping = {nickname: 'displayName', email: 'hello@example.com'}
 
   
