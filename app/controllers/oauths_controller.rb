@@ -13,7 +13,7 @@ class OauthsController < ApplicationController
       redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
     else
       begin
-        @user = build_from(provider)
+        @user = create_from(provider)
         logger.debug("build_user: #{@user}")
         reset_session
         auto_login(@user)
