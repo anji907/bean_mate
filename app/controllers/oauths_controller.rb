@@ -9,10 +9,12 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
     puts "provider: #{provider}"
     if @user = login_from(provider)
+      puts "login_user: #{@user}"
       redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
     else
       begin
         @user = create_from(provider)
+        puts "create_user: #{@user}"
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
