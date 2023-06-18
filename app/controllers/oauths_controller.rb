@@ -7,14 +7,12 @@ class OauthsController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
-    logger.debug("provider: #{provider}")
+    puts "provider: #{provider}"
     if @user = login_from(provider)
-      logger.debug("login_user: #{@user}")
       redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
     else
       begin
         @user = create_from(provider)
-        logger.debug("build_user: #{@user}")
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
