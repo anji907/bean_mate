@@ -15,8 +15,10 @@ class OauthsController < ApplicationController
       begin
         @user = build_from(provider)
         @user.email = SecureRandom.uuid + "@example.com"
+        @user.valid?
+        puts @user.errors.full_messages
+
         @user.save!
-        puts "create_user: #{@user}"
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
