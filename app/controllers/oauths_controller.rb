@@ -19,7 +19,7 @@ class OauthsController < ApplicationController
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
       rescue
-        puts "error"
+        puts "----------------errorが発生しました。------------------"
         flash[:danger] = "Failed to login from #{provider.titleize}!"
         redirect_to root_path
       end
