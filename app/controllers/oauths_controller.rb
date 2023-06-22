@@ -15,17 +15,18 @@ class OauthsController < ApplicationController
       begin
         @user = build_from(provider)
         @user.email = SecureRandom.uuid + "@example.com"
-        puts "user: #{@user}"
+        puts "user: #{@user.uid}"
         @user.external_auth = true
         @user.valid?
         puts @user.errors.full_messages
 
         if @user.valid?
           @user.save!
+
           authentication = @user.authentications.new(
             user_id: @user.id,
             provider: provider,
-            uid: auth_params[:uid]
+            uid: @user.uid
           )
         end
         reset_session
@@ -43,6 +44,6 @@ class OauthsController < ApplicationController
   private
 
   def auth_params
-    params.permit(:code, :provider, :error, :state, :uid)
+    params.permit(:code, :provider, :error, :state)
   end
 end
