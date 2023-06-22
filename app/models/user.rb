@@ -2,11 +2,8 @@ class User < ApplicationRecord
   attr_accessor :external_auth
   authenticates_with_sorcery!
 
-  # validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] && !external_auth}
-  # validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] && !external_auth }
-  # validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] && !external_auth }
-
-  with_options if: -> { new_record? || changes[:crypted_password] && !external_auth } do
+  # 外部認証の場合はパスワードを必要としない
+  with_options if: -> { (new_record? || changes[:crypted_password]) && !external_auth } do
     validates :password, length: { minimum: 8 }
     validates :password, confirmation: true
     validates :password_confirmation, presence: true
