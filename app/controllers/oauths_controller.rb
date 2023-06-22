@@ -20,7 +20,14 @@ class OauthsController < ApplicationController
         @user.valid?
         puts @user.errors.full_messages
 
-        @user.save!
+        if @user.valid?
+          @user.save!
+          authentication = @user.authentications.new(
+            user_id: @user.id,
+            provider: provider,
+            uid: auth_params[:uid]
+          )
+        end
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
@@ -36,6 +43,6 @@ class OauthsController < ApplicationController
   private
 
   def auth_params
-    params.permit(:code, :provider, :error, :state)
+    params.permit(:code, :provider, :error, :state, :uid)
   end
 end
