@@ -15,7 +15,8 @@ class OauthsController < ApplicationController
       begin
         @user = build_from(provider)
         @user.email = SecureRandom.uuid + "@example.com"
-        # @user.external_auth = true
+        puts "user: #{@user}"
+        @user.external_auth = true
         @user.valid?
         puts @user.errors.full_messages
 
