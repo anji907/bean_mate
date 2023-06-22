@@ -18,16 +18,8 @@ class OauthsController < ApplicationController
         @user.external_auth = true
         @user.valid?
         puts @user.errors.full_messages
+        @user.save!
 
-        if @user.valid?
-          @user.save!
-
-          authentication = @user.authentications.new(
-            user_id: @user.id,
-            provider: provider,
-            uid: @user.uid
-          )
-        end
         reset_session
         auto_login(@user)
         redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
