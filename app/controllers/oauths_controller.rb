@@ -18,6 +18,7 @@ class OauthsController < ApplicationController
         @user.external_auth = true
         @user.valid?
         puts @user.errors.full_messages
+        puts @user.line_user_id
         @user.save!
 
         reset_session
