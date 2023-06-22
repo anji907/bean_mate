@@ -16,10 +16,18 @@ class OauthsController < ApplicationController
         @user = build_from(provider)
         @user.email = SecureRandom.uuid + "@example.com"
         @user.external_auth = true
-        @user.valid?
-        puts @user.errors.full_messages
-        puts @user.line_user_id
-        @user.save!
+
+        if @user.valid?
+          @user.save!
+
+          authentication = @user.authentications.new(
+            user_id: @user.id,
+            uid: @user.line_user_id,
+            provider: provider
+          )
+
+          authentication.save!
+        end
 
         reset_session
         auto_login(@user)
