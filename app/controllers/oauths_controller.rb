@@ -7,10 +7,9 @@ class OauthsController < ApplicationController
 
   def callback
     provider = auth_params[:provider]
-    puts "provider: #{provider}"
     if @user = login_from(provider)
-      puts "login_user: #{@user}"
-      redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
+      flash[:success] = "#{provider.titleize}でログインしました。"
+      redirect_to root_path
     else
       begin
         @user = build_from(provider)
@@ -31,12 +30,13 @@ class OauthsController < ApplicationController
 
         reset_session
         auto_login(@user)
-        redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
+        flash[:success] = "#{provider.titleize}でログインしました。"
+        redirect_to root_path
       rescue => e
         puts "----------------errorが発生しました。------------------"
         puts e.message
-        flash[:danger] = "Failed to login from #{provider.titleize}!"
-        redirect_to root_path
+        flash[:danger] = "#{provider.titleize}でのログインに失敗しました。"
+        redirect_to login_path
       end
     end
   end
