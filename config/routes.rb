@@ -6,16 +6,12 @@ Rails.application.routes.draw do
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
-  post 'webhook', to: 'line_bot#callback'
+  post 'webhook', to: 'api/line_bot#callback'
   root 'cafes#index'
 
-  # LINEログイン
-  get 'line_login_api/login', to: 'line_login_api#login'
-  get 'line_login_api/callback', to: 'line_login_api#callback'
-
   # sorcery LINEログイン
-  get "oauth/callback" => "oauths#callback"
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  get "oauth/callback" => "api/oauths#callback"
+  get "oauth/:provider" => "api/oauths#oauth", :as => :auth_at_provider
 
   resources :users, only: %i[show create destroy]
   resource :profiles, only: %i[show edit update]
