@@ -1,0 +1,12 @@
+<div class="container">
+  <h4 class="text-center mt-5">いいねしたカフェ</h4>
+
+  <% if @cafes.present? %>
+    <div class="row row-cols-3 mt-5">
+      <%= render partial: 'cafes/cafe', collection: @cafes %>
+    </div>
+  <% else %>
+    <p class="text-center mt-5">いいねしたカフェはありません</p>
+  <% end %>
+
+</div>

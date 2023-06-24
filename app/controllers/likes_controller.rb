@@ -1,4 +1,8 @@
 class LikesController < ApplicationController
+  def index
+    @cafes = current_user.liked_cafes
+  end
+
   def create
     @cafe = Cafe.find(params[:cafe_id])
     current_user.like(@cafe)
