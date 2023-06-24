@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      cafe: 'カフェ'
+      like: 'いいね'
+      message: 'メッセージ'
+      notification: '通知'
+      room: 'チャットルーム'
+    attributes:
+      user:
+        nickname: 'ニックネーム'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認）'
+        bio: '自己紹介'
+      cafe:
+        name: '店名'
+        description: '説明'
+        address: '住所'
+        website: 'ホームページ'
+        weekday_text: '営業時間'
