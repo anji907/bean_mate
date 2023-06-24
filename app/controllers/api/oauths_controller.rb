@@ -15,6 +15,8 @@ class Api::OauthsController < ApplicationController
         @user = build_from(provider)
         @user.email = SecureRandom.uuid + "@example.com"
         @user.external_auth = true
+        @access_token = get_access_token(auth_params[:provider], auth_params[:code])
+        puts @access_token
 
         if @user.valid?
           @user.save!
