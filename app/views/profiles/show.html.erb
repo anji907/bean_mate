@@ -1,25 +1,25 @@
 <div class="container">
-  <h1>プロフィール</h1>
+  <h1 class="text-center mt-5">プロフィール</h1>
 
-  <div class="profile">
-    <p>ニックネーム: <%= @user.nickname %></p>
-    <p>自己紹介文: <%= @user.bio if @user.bio %></p>
-
-    <% if @user.sns_identifier %>
-      <p>SNS:
-        <%= link_to @user.sns_identifier, target: :_blank do %>
-          <i class="bi bi-instagram"></i>
-        <% end %>
-      </p>
-    <% end %>
-
-    <div class="mb-3">
-      <p>プロフィール画像:</p>
+    <div class="d-flex align-items-center justify-content-center">
       <% @user.avatars.each do |avatar| %>
-        <%= image_tag(avatar, width: 200) %>
-      <% end %>
+          <%= image_tag(avatar, width: '100', height: '100', class: 'rounded-circle mr15') %>
+        <% end %>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="col-12 col-md-4 mt-5">
+      </div>
+      <div class="col-12 col-md-8 mt-5">
+        <h2>ユーザー名: <span id="username"><%= @user.nickname %></span></h2>
+        <h4>SNS:
+          <%= link_to @user.sns_identifier, target: :_blank do %>
+            <i class="bi bi-instagram"></i>
+          <% end %>
+        </h4>
+        <p>自己紹介: <span id="bio"><%= @user.bio if @user.bio %></span></p>
+      </div>
+    </div>
 
   <%= link_to 'プロフィールを編集', edit_profiles_path, class: 'btn btn-primary' if @user == current_user %><br>
   <% if current_user.talking?(@user) %>
