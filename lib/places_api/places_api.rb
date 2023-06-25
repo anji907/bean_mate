@@ -64,8 +64,6 @@ def get_cafe_detail_from_place_id(place_id)
 
   cafe = Cafe.find_or_initialize_by(place_id: place_id)
   cafe.update!(name: name, description: description, address: address, website: website, latitude: latitude, longitude: longitude)
-
-  get_place_photo(cafe, result["photos"][0]["photo_reference"]) if result["photos"]
 end
 
 def save_place_photo
