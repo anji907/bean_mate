@@ -1,6 +1,6 @@
 <div class="col mb-3">
   <%= link_to cafe_path(cafe) do %>
-    <%= image_tag url_for(cafe.images[0]), class: 'img-thumbnail' if cafe.images.attached? %>
+    <%= image_tag url_for(cafe.images[0].variant(resize_to_fill: [300, 300])), class: 'img-thumbnail' if cafe.images.attached? %>
     <p><%= cafe.name %></p>
   <% end %>
   <%= render partial: 'likes/like_button', locals: { cafe: cafe } %>
