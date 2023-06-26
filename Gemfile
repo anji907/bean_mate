@@ -69,6 +69,9 @@ end
 
 group :production do
   gem 'pg'
+
+  # 画像アップロード
+  gem 'aws-sdk-s3', require: false
 end
 
 gem 'sorcery'
