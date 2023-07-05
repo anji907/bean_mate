@@ -3,7 +3,7 @@ module UsersHelper
     if user.avatars.attached?
       return user.avatars[0]
     else
-      return image_path('default_avatar.jpeg')
+      return image_path('default_avatar.jpg')
     end
   end
 end
