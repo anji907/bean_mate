@@ -9,11 +9,7 @@
             <% if user != current_user %>
               <tr>
                 <td>
-                  <% if user.avatars[0] %>
-                    <%= image_tag user.avatars[0], width: 40, height: 40, class: 'rounded-circle mr15'%>
-                  <% else %>
-                    <%= image_tag 'default-avatar.jpeg', width: 40, height: 40, class: 'rounded-circle mr15'%>
-                  <% end %>
+                  <%= image_tag avatars_attached?(user), width: 40, height: 40, class: 'rounded-circle mr15'%>
                 </td>
                 <td>
                 <%= link_to room_path(room.id) do %>
