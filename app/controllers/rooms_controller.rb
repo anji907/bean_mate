@@ -6,7 +6,6 @@ class RoomsController < ApplicationController
   def show
     @room = current_user.rooms.find(params[:id])
     @messages = @room.messages
-    @message = Message.new
   end
 
   def create
