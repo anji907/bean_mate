@@ -44,17 +44,20 @@ const appMessage = consumer.subscriptions.create({ channel: "MessageChannel", ro
       let div = document.createElement('div');
       div.setAttribute('class', 'message-left');
 
+      let picDiv = document.createElement('div');
+      div.setAttribute('class', 'pic');
+
       let img = document.createElement('img');
       img.setAttribute('src', data['avatar_url']);
       img.setAttribute('class', 'rounded-circle mr15');
       img.height = 40;
       img.width = 40;
-      div.append(img);
+      picDiv.append(img);
 
       // span for nickname
       let span = document.createElement('span');
       span.setAttribute('class', 'user-nickname');
-      span.textContent = data['user'] + 'さん';
+      span.textContent = data['user'];
       div.append(span);
 
       // div for message
