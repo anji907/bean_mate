@@ -73,4 +73,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   Rails.application.routes.default_url_options[:host] = "localhost:3000"
+
+  # 動的コンパイルを有効にする
+  config.assets.debug = true
 end
