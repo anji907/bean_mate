@@ -1,15 +1,20 @@
 <% if message.user == current_user %>
-  <div class="message-right">
+  <li class="message-right">
+    <div class="pic">
+      <%= image_tag avatars_attached?(message.user), width: 40, height: 40, class: 'rounded-circle mr15'%>
+    </div>
     <div class="message-content">
       <%= simple_format message.content, id: 'message' %>
     </div>
-  </div>
+  </li>
 <% else %>
-  <div class="message-left">
-    <%= image_tag avatars_attached?(message.user), width: 40, height: 40, class: 'rounded-circle mr15'%>
-    <span class="user-nickname"><%= message.user.nickname %>さん</span>
+  <li class="message-left">
+    <div class="pic">
+      <%= image_tag avatars_attached?(message.user), width: 40, height: 40, class: 'rounded-circle mr15'%>
+      <span class="user-nickname"><%= message.user.nickname %></span>
+    </div>
     <div class="message-content">
       <%= simple_format message.content, id: 'message' %>
     </div>
-  </div>
+  </li>
 <% end %>
