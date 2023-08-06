@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   def index
-    @cafes = current_user.liked_cafes
+    user = User.find_by(id: params[:user_id])
+    @cafes = user&.liked_cafes
   end
 
   def create
