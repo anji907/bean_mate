@@ -1,25 +1,103 @@
+body {
+  padding-top: 56px;
+}
+
 a {
   text-decoration: none;
 }
 
-.message-right {
-  text-align: right;
+.chat-container {
+  height: 100vh;
+  background: #87a6d2;
 }
 
-.message-left {
-  text-align: left;
+.messages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: scroll;
 }
-
 
 .user-nickname {
   font-size: 13px;
   color: rgb(111, 111, 111);
 }
 
-.message-area {
-  overflow: scroll;
-}
-
 .list-group-item {
   background-color: lightgray;
+}
+
+.messages li {
+  display: flex;
+  margin-top: 16px;
+}
+
+li.message-right {
+  flex-direction: row-reverse;
+}
+
+.message-right .message-content {
+  position: relative;
+  background: #78e378;
+  color: #262626;
+
+  &::before {
+    top: 12px;
+    right: -12px;
+    border-left-color: #78e378;
+  }
+}
+
+.message-left .message-content {
+  position: relative;
+  background: #fff;
+  color: #262626;
+
+  &::before {
+    top: 12px;
+    left: -12px;
+    border-right-color: #fff;
+  }
+}
+
+.pic {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+}
+
+.messages img {
+  border-radius: 50%;
+}
+
+.message-content {
+  border-radius: 8px;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 吹き出しの三角形
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    position: absolute;
+  }
+}
+
+.message-content p {
+  display: inline-block;
+  max-width: 60%;
+  line-height: 1.8;
+}
+
+#message-form {
+  display: flex;
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  width: 75%;
 }
