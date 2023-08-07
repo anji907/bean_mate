@@ -6,9 +6,9 @@ class Message < ApplicationRecord
   validates :content, presence: true
   validates :content, length: { maximum: 1000 }
 
-  def create_message_notification!(current_user)
-    notification = current_user.active_notifications.new(
-      sender_id: current_user.id,
+  def create_message_notification!(user)
+    notification = user.active_notifications.new(
+      sender_id: user.id,
       receiver_id: get_receiver_id,
       message: 'メッセージが届きました',
       notifiable: self
