@@ -18,16 +18,12 @@
     </div>
 
     <div class="mb-3">
-      <%= f.label :avatars, class: 'label-control' %>
-      <%= f.file_field :avatars, class: 'form-control', multiple: true %>
+      <%= f.label :avatar, class: 'label-control' %>
+      <%= f.file_field :avatar, class: 'form-control' %>
     </div>
 
     <div class="mb-3">
-      <% if @user.avatars.attached? %>
-        <% @user.avatars.each do |avatar| %>
-          <%= image_tag avatar, width: '100', height: '100', class: 'rounded-circle mr15' %>
-        <% end %>
-      <% end %>
+      <%= image_tag @user.avatar, width: '100', height: '100', class: 'rounded-circle mr15' if @user.avatar.attached? %>
     </div>
     
     <div class="mb-3">

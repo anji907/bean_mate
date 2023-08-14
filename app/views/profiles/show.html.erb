@@ -2,9 +2,7 @@
   <h1 class="text-center mt-5">プロフィール</h1>
 
     <div class="d-flex align-items-center justify-content-center">
-      <% @user.avatars.each do |avatar| %>
-          <%= image_tag(avatar, width: '100', height: '100', class: 'rounded-circle mr15') %>
-        <% end %>
+      <%= image_tag(@user.avatar, width: '100', height: '100', class: 'rounded-circle mr15') if @user.avatar.attached? %>
     </div>
 
     <div class="row">
