@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :email, uniqueness: true
 
-  has_many_attached :avatars
+  has_one_attached :avatar
 
   # sorcery external
   has_many :authentications, dependent: :destroy
