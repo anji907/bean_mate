@@ -221,7 +221,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.line.key = ENV['LINE_LOGIN_CHANNEL_ID']
   config.line.secret = ENV['LINE_LOGIN_CHANNEL_SECRET']
-  config.line.callback_url = "https://bean-mate.herokuapp.com/oauth/callback?provider=line"
+  config.line.callback_url = "https://bean-mate.onrender.com/oauth/callback?provider=line"
   config.line.scope = "profile"
   # config.line.bot_prompt = "normal"
   config.line.user_info_mapping = {:nickname => "displayName", :line_user_id => "userId"}
